@@ -15,6 +15,7 @@ let package = Package(
       name: "tca_dependencies",
       targets: [
         "ApplicationClient",
+        "CameraClient",
       ]
     ),
   ],
@@ -30,12 +31,35 @@ let package = Package(
           name: "Dependencies",
           package: "swift-dependencies"
         ),
+        .product(
+          name: "XCTestDynamicOverlay",
+          package: "xctest-dynamic-overlay"
+        ),
+      ]
+    ),
+    .target(
+      name: "CameraClient",
+      dependencies: [
+        .product(
+          name: "Dependencies",
+          package: "swift-dependencies"
+        ),
+        .product(
+          name: "XCTestDynamicOverlay",
+          package: "xctest-dynamic-overlay"
+        ),
       ]
     ),
     .testTarget(
       name: "ApplicationClientTests",
       dependencies: [
         "ApplicationClient"
+      ]
+    ),
+    .testTarget(
+      name: "CameraClientTests",
+      dependencies: [
+        "CameraClient"
       ]
     ),
   ]
