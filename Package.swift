@@ -16,6 +16,7 @@ let package = Package(
       targets: [
         "ApplicationClient",
         "CameraClient",
+        "HealthClient",
       ]
     ),
   ],
@@ -50,6 +51,19 @@ let package = Package(
         ),
       ]
     ),
+    .target(
+      name: "HealthClient",
+      dependencies: [
+        .product(
+          name: "Dependencies",
+          package: "swift-dependencies"
+        ),
+        .product(
+          name: "XCTestDynamicOverlay",
+          package: "xctest-dynamic-overlay"
+        ),
+      ]
+    ),
     .testTarget(
       name: "ApplicationClientTests",
       dependencies: [
@@ -60,6 +74,12 @@ let package = Package(
       name: "CameraClientTests",
       dependencies: [
         "CameraClient"
+      ]
+    ),
+    .testTarget(
+      name: "HealthClientTests",
+      dependencies: [
+        "HealthClient"
       ]
     ),
   ]
